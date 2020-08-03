@@ -24,3 +24,19 @@ This dataset has been collected from TMDB. The movie details, credits and keywor
 ## Acknowledgement
 This is a playground prediction competition from Kaggle, link below:
 > https://www.kaggle.com/c/tmdb-box-office-prediction/overview
+
+## Requirement Files
+To run the programme correctly, you must make sure that you have installed these tools or files.
+
+Python and its library.
+- Python 3.7
+- Numpy
+- Pandas
+- Matplotlib
+- Sklearn
+- Seaborn
+
+Running files
+- final.py
+- final_test.csv
+- final_train.csv
