@@ -51,7 +51,6 @@ train['belongs_to_collection'].fillna(0, inplace=True)
 draw_train = train
 draw_train['newbelongs_to_collection'] = draw_train['belongs_to_collection'].apply(lambda x: literal_eval(x) if x != 0 else 0)
 draw_train['name_collection'] = draw_train['newbelongs_to_collection'].apply(lambda x: 1 if x != 0 else 0)
-sns.barplot(x='name_collection',y='revenue',data=draw_train)
 
 train['belongs_to_collection'].fillna(0, inplace=True)
 test['belongs_to_collection'].fillna(0, inplace=True)
@@ -93,7 +92,6 @@ checkBudget(train)
 checkBudget(test)
 # drop the old budget
 drop_list_Yue.append('budget')
-sns.jointplot(x="budget_log", y="revenue", data=train)
 
 ###########################################################################
 ###            The following preprocess the "genre" attribute           ###
@@ -131,7 +129,6 @@ train['homepage'].fillna(0, inplace=True)
 test['homepage'].fillna(0, inplace=True)
 
 train['len_homepage'] = train['homepage'].apply(lambda x: 1 if x != 0 else 0)
-sns.barplot(x='len_homepage',y='revenue',data=train)
 
 # From the bar chart, the movie with homepage has more revenue.
 
@@ -212,8 +209,6 @@ drop_list_Yue.append('overview')
 # Show the relationship between popularity and revenue
 train['popularity'].fillna(0, inplace=True)
 test['popularity'].fillna(0, inplace=True)
-sns.jointplot(x="popularity", y="revenue", data=train)
-
 
 ###########################################################################
 ###         The following preprocess the "poster path" attribute        ###
@@ -410,12 +405,6 @@ test.rename(columns={0 : "released_on_" + "Jan", 1 : "released_on_" + "Feb", 2 :
 median = train["runtime"].median()
 # Fill na with median runtime value
 train["runtime"].fillna(median,inplace=True)
-
-train.plot(x="runtime",y="revenue",kind="scatter")
-plt.xlabel("Movie Rumtime (min)")
-plt.ylabel("Movie Revenue (million $)")
-plt.title("Movie revenue vs Runtime")
-plt.show()
 
 median = test["runtime"].median()
 test["runtime"].fillna(median,inplace=True)
@@ -646,22 +635,15 @@ test['all_crew_members'] = test['crew'].apply(lambda x: list(sorted([i['name'] f
 train['crew_score'] = train['all_crew_members'].apply(lambda x: statistics.mean(list(crew_with_mean_revenue[cru] for cru in x) if (x == x and len(x) > 0) else [0]))
 test['crew_score'] = test['all_crew_members'].apply(lambda x: statistics.mean(list(crew_with_mean_revenue[cru] for cru in x) if (x == x and len(x) > 0) else [0]))
 
-print("Revenue crew score correlation" + str(train['crew_score'].corr(train['revenue'])))
+print("Revenue crew score correlation: " + str(train['crew_score'].corr(train['revenue'])))
 
 # Final Adjustments
-
-def normalize(df):
-    columns = df.columns.tolist()
-    columns.remove('id')
-    for col in columns:
-        if df[col].max() > 1:
-            df[col] = df[col]/df[col].max()
 
 def log(df):
     columns = df.columns.tolist()
     columns.remove('id')
     for col in columns:
-        if df[col].max() > 1:
+        if df[col].values.max() > 1:
             df[col] = np.log(df[col])
 
 
@@ -670,9 +652,6 @@ numericals = train.columns[train.dtypes != object]
 train_numericals = train[numericals]
 num = test.columns[test.dtypes != object]
 test_numericals = test[num]
-
-normalize(train_numericals)
-normalize(test_numericals)
 
 log(train_numericals)
 log(test_numericals)
