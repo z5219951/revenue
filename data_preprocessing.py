@@ -36,6 +36,12 @@ import operator
 import statistics
 import calendar
 
+# Suppress Warnings
+def warn(*args, **kwargs):
+    pass
+import warnings
+warnings.warn = warn
+
 # Read in training and test data  
 train = pd.read_csv("./Data/train.csv")
 test = pd.read_csv("./Data/test.csv")
