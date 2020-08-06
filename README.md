@@ -34,4 +34,4 @@ Python and its library.
 - Tim Luo `z5115679@ad.unsw.edu.au`
 - Shu Yang `z5172181@ad.unsw.edu.au`
 - YixiaoZhan `z5210796@ad.unsw.edu.au`
-- Yue Qi `z219951@ad.unsw.edu.au`
+- Yue Qi `z5219951@ad.unsw.edu.au`
