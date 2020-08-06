@@ -305,7 +305,7 @@ train.loc[ (train['release_year'] <= 19) & (train['release_year'] < 100), "relea
 train.loc[ (train['release_year'] > 19)  & (train['release_year'] < 100), "release_year"] += 1900
 release_date = pd.to_datetime(train["release_date"])
 # Add the derived release weekday name to train
-train["release_dayofweek"] = release_date.dt.weekday_name
+train["release_dayofweek"] = release_date.dt.day_name()
 
 # Do the same to test set
 test[["release_month","release_day","release_year"]] = test["release_date"].str.split("/",expand=True).replace(np.nan, -1).astype(int)
@@ -314,7 +314,7 @@ test.loc[ (test['release_year'] <= 19) & (test['release_year'] < 100), "release_
 test.loc[ (test['release_year'] > 19)  & (test['release_year'] < 100), "release_year"] += 1900
 release_date = pd.to_datetime(test["release_date"])
 # Add the derived release weekday name to test
-test["release_dayofweek"] = release_date.dt.weekday_name
+test["release_dayofweek"] = release_date.dt.day_name()
 
 # test release data contains null value, add mode to fill null value
 test['release_dayofweek'].fillna('Friday',inplace=True)
@@ -655,9 +655,10 @@ train_numericals = train[numericals]
 num = test.columns[test.dtypes != object]
 test_numericals = test[num]
 
+np.seterr(divide = 'ignore')
+pd.options.mode.chained_assignment = None
 log(train_numericals)
 log(test_numericals)
-
 
 train_numericals.to_csv('final_train.csv', encoding = 'utf-8-sig', index=False)
 test_numericals.to_csv('final_test.csv', encoding = 'utf-8-sig', index=False)
