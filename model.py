@@ -15,8 +15,8 @@ Yixiao Zhan (z5210796)
 
 # Models
 # The following is a stacked model. This constists of:
-# LEVEL 0: Catboost, Random Forests, Linear Regressor, KNN, Ridge Regression, SVM, ElasticNet, XGMBoost
-# LEVEL 1: Linear Regression (As the meta learning model) which uses the StackingRegressor to find the best model.
+# LEVEL 1: Catboost, Random Forests, Linear Regressor, KNN, Ridge Regression, SVM, ElasticNet, XGMBoost
+# LEVEL 2: Linear Regression (As the meta learning model) which uses the StackingRegressor to find the best model.
 
 from catboost import CatBoostRegressor
 from sklearn.feature_selection import SelectKBest, chi2
@@ -36,6 +36,7 @@ import numpy as np
 import seaborn as sns
 import copy
 
+# Suppress Warnings
 def warn(*args, **kwargs):
     pass 
 
@@ -175,7 +176,13 @@ for name, model in models.items():
 plt.boxplot(results, labels=names, showmeans=True)
 plt.show()
 
-# Plots of all models 
+# Plots of all models
+plt.figure(figsize=(15,15))
+plt.boxplot(results, labels=names, showmeans=True)
+plt.xlabel('Models', fontsize=12)
+plt.ylabel('RMSE', fontsize=12)
+plt.suptitle('Performance Of Different Models', fontsize=14)
+plt.show()
 
 # Train and predict stacked model
 stack = get_stack()
@@ -185,9 +192,4 @@ predictions = stack.predict(test)
 # Submission
 submission = pd.read_csv('Data/sample_submission.csv')
 submission['revenue'] = np.expm1(predictions)
-submission.to_csv('submission_2.csv', index = False)
-
-
-
-
-
+submission.to_csv('submission.csv', index = False)
