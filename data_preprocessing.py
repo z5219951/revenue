@@ -37,10 +37,8 @@ import statistics
 import calendar
 
 # Suppress Warnings
-def warn(*args, **kwargs):
-    pass
 import warnings
-warnings.warn = warn
+warnings.filterwarnings('ignore')
 
 # Read in training and test data  
 train = pd.read_csv("./Data/train.csv")
@@ -661,10 +659,13 @@ train_numericals = train[numericals]
 num = test.columns[test.dtypes != object]
 test_numericals = test[num]
 
-np.seterr(divide = 'ignore')
-pd.options.mode.chained_assignment = None
-log(train_numericals)
-log(test_numericals)
+try:
+    np.seterr(divide = 'ignore')
+    pd.options.mode.chained_assignment = None
+    log(train_numericals)
+    log(test_numericals)
+except RuntimeError:
+    pass
 
 train_numericals.to_csv('final_train.csv', encoding = 'utf-8-sig', index=False)
 test_numericals.to_csv('final_test.csv', encoding = 'utf-8-sig', index=False)
