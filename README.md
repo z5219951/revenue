@@ -28,13 +28,13 @@ Python and its library.
 >**Install using the command** `pip install -r  requirements.txt`
 
 ## What's included
-TMDB Box Office Prediction.pdf
-data_preprocessing.py
-model.py
-final_train.csv
-final_test.csv
-submission.csv
-requirements.txt
+- TMDB Box Office Prediction.pdf
+- data_preprocessing.py
+- model.py
+- final_train.csv
+- final_test.csv
+- submission.csv
+- requirements.txt
 
 ## How to run 
 
