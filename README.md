@@ -28,7 +28,7 @@ Python and its library.
 >**Install using the command** `pip install -r  requirements.txt`
 
 ## What's included
-- TMDB Box Office Prediction.pdf
+- report.pdf
 - data_preprocessing.py
 - model.py
 - final_train.csv
@@ -39,6 +39,7 @@ Python and its library.
 - appendix.zip
 
 ## How to run 
+You need `unzip data.zip` before you run the command:
 1. Running the data_preprocessing
 `python3 data_preprocessing.py`
 
