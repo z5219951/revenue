@@ -173,16 +173,14 @@ for name, model in models.items():
     results.append(-scores)
     names.append(name)
     print("SCORE OF {} === {}".format(name, -mean(scores)))
-plt.boxplot(results, labels=names, showmeans=True)
-plt.show()
 
 # Plots of all models
-plt.figure(figsize=(15,15))
-plt.boxplot(results, labels=names, showmeans=True)
-plt.xlabel('Models', fontsize=12)
-plt.ylabel('RMSE', fontsize=12)
-plt.suptitle('Performance Of Different Models', fontsize=14)
-plt.show()
+# plt.figure(figsize=(15,15))
+# plt.boxplot(results, labels=names, showmeans=True)
+# plt.xlabel('Models', fontsize=12)
+# plt.ylabel('RMSE', fontsize=12)
+# plt.suptitle('Performance Of Different Models', fontsize=14)
+# plt.show()
 
 # Train and predict stacked model
 stack = get_stack()
