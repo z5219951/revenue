@@ -39,7 +39,7 @@ Python and its library.
 - appendix.zip
 
 ## How to run 
-You need `unzip data.zip` before you run the command:
+You need `unzip data.zip` before running pyhon scripts:
 1. Running the data_preprocessing
 `python3 data_preprocessing.py`
 
