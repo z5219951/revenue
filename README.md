@@ -34,8 +34,9 @@ Python and its library.
 - final_train.csv
 - final_test.csv
 - submission.csv
+- submission_cb.csv
 - requirements.txt
-- data.zip
+- Data.zip
 - appendix.zip
 
 ## How to run 
