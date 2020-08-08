@@ -43,7 +43,7 @@ You need `unzip data.zip` before running pyhon scripts:
 1. Running the data_preprocessing
 `python3 data_preprocessing.py`
 
-2. Running the modal
+2. Running the model
 `python3 model.py`
 
 ## Teams
@@ -53,7 +53,7 @@ You need `unzip data.zip` before running pyhon scripts:
 - Yue Qi `z5219951@ad.unsw.edu.au`
 
 ## Issues
-The current modal for this project may not perfect. We are still exploring more suitable methods to improve the performance of outputs. Please contact us if there is anything wrong, appreciated.
+The current model for this project may not perfect. We are still exploring more suitable methods to improve the performance of outputs. Please contact us if there is anything wrong, appreciated.
 
 ## Maintainer
 If you have any enquiries on this project or any other questions, please contact us at `z5115679@ad.unsw.edu.au`

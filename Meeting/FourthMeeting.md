@@ -9,7 +9,7 @@ Date: 2 August 2020
 - Yixiao Zhan
 
 ## Meeting Record
-Today we mainly talk about how to divide our work for the next stage which is report part. First, we make sure that all data preprocessing and modal parts have finished. Tim will make a final check on modal. Then Yixiao will convert the data into py form. 
+Today we mainly talk about how to divide our work for the next stage which is report part. First, we make sure that all data preprocessing and model parts have finished. Tim will make a final check on model. Then Yixiao will convert the data into py form. 
 
 For the report part, we divide the report part as follow:
 
